@@ -1,13 +1,9 @@
 from django.shortcuts import render
+from django.views.generic import TemplateView
 
 
-def index(request):
-    context={
-            'who': 'World',
-            'app_name': 'Hexlet Django Blog',
-            'page_title': 'Main Page'
-        }
-    return render(request, "index.html", context)
+class IndexView(TemplateView):
+    template_name = 'index.html'
 
 
 def about(request):
