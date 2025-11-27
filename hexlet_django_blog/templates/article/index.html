@@ -1,5 +1,9 @@
 {% extends "base.html" %}
 
-
+{% block content %}
 <h1> {{ page_title }} </h1>
 <a href="/">Main Page</a>
+
+<p>Статья номер {{ article_id }}. Тег {{ tags }}</p>
+
+{% endblock %}

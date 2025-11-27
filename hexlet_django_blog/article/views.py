@@ -6,10 +6,12 @@ from django.http import HttpResponse
 class IndexView(View):
     template_name = 'article/index.html'
 
-    def get(self, request, *args, **kwargs):
+    def get(self, request, tags, article_id, *args, **kwargs):
+        text = f"Статья номер {article_id}. Тег {tags}"
         context = {
-        'app_name': 'Hexlet Django BLog',
-        'page_title': 'Articles',
-        'articles': []
+            'text': text,    
+            'tags': tags,
+            'article_id': article_id
     }
+        #return HttpResponse(text)
         return render(request, self.template_name, context)
