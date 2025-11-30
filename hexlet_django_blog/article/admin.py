@@ -12,5 +12,3 @@ class ArticleAdmin(admin.ModelAdmin):
     list_filter = (
         ("created_at", DateFieldListFilter),
     ) 
-
-#admin.site.register(Article, ArticleAdmin)
