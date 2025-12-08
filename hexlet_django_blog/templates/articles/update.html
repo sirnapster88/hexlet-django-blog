@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+
+{% if form.errors %}
+    <div>
+        <ul>
+            {% for error in form.errors %}
+                <li><strong>{{ error| escape }}</strong></li>
+            {% endfor %}
+        </ul>
+    </div>
+{% endif %}
+
+{% block content %}
+<h1>Редактировать статью</h1>
+<form action="{% url 'articles_update' id=article_id %}" method="POST">
+    {% csrf_token %}
+    <table border="1">
+        {{ form }}
+    </table>
+    <input type="submit" value="Сохранить">
+</form>
+
+<script>
+
+    document.addEventListener('DOMContentLoaded', function() {
+    document.querySelectorAll('input, textarea, select').forEach(function(field) {
+        field.classList.add('form-control');
+    });
+});
+</script>
+{% endblock %}

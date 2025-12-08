@@ -1,6 +1,10 @@
-<h1>Hello, {{ who }}!</h1>
-
-<h1>Welcome to {{ app_name }}</h1>
-<h3>{{ page_title }}</h3>
-<a href="/articles/">Articles</a>
-<a href="/about/">О проекте</a>
+{% extends "base.html" %}
+{% block content %}
+    <h3>{{ page_title }}</h3>
+    <div>
+        <a href="/articles/">Список статей</a>
+    </div>
+    <div>
+        <a href="/about/">О проекте</a>
+    </div>
+{% endblock %}

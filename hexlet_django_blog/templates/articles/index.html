@@ -2,8 +2,31 @@
 
 {% block content %}
     <h1>Список статей</h1>
-    {% for article in articles %}
-        <h2><a href="{% url 'article_detail' article.id %}">{{ article.name }}</a></h2>
-        <div>{{ article.body|slice:":200" }}</div>
-    {% endfor %}
+    <a href="{% url 'articles_create' %}" class="btn btn-success my-3">Создать статью</a>
+    <table class="table">
+        <thead>
+            <th>Название статьи</th>
+            <th>Текст статьи</th>
+            <th>Действия</th>
+        </thead>
+        <tbody>
+            {% for article in articles %}
+            <tr>
+                <td>{{ article.name }}</td>
+                <td>{{ article.body|slice:":200" }}</td>
+                <td>
+                    <a href="{% url 'article_detail' article.id %}" class="btn btn-sm btn-info">Просмотреть статью</a>
+                    <a href="{% url 'articles_update' article.id %}" class="btn btn-sm btn-warning">Редактировать статью</a>
+                </td>
+            {% endfor %}
+        </tbody>
+    </table>
 {% endblock %}
+
+<form action="{% url 'comment_create' %}" method="post">
+    {% csrf_token %}
+    <table border="1">
+       {{ form }}
+    </table>
+    <input type="submit" value="Сохранить">
+</form>

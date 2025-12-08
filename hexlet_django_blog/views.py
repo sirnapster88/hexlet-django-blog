@@ -6,8 +6,7 @@ class IndexView(TemplateView):
     template_name = 'index.html'
 
     def get(self, request, *args, **kwargs ):
-        reveresed_article = reverse('articles', kwargs={'tags': 'python', 'article_id': 42})
-        return redirect(reveresed_article)
+        return render(request, 'index.html')
 
 
 
